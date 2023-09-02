@@ -57,7 +57,7 @@ function main() {
     const sampleSizes = [100, 1000, 1000000];
 
     for (const sampleSize of sampleSizes){
-        console.log(runExperiment(sampleSize), sampleSize)
+        console.log(runExperiment(sampleSize), sampleSize);
     }
   // TODO
   // Write a for..of loop that calls the `runExperiment()` function for each
