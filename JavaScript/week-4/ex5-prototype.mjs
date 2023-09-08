@@ -1,18 +1,5 @@
 import eurosFormatter from './euroFormatter.mjs';
 
-/*
-1 - Add two data values to the wallet:
-
-  - A variable/property dailyAllowance indicating the maximum amount that can be withdrawn per day. Set the default value to 40.
-
-  - A variable/property dayTotalWithdrawals that holds the total amount withdrawn during the day, initially zero.
-
-2 - Add a method resetDailyAllowance(). It should reset dayTotalWithdrawals to zero. Assume that the issuer of the wallet (e.g. a bank) will call this function at the start of a new day.
-
-3 - Add a method setDailyAllowance(newAllowance) to set/update the maximum daily allowance (dailyAllowance). Assume that the issuer of the wallet (e.g., a bank) will call this function after approving a request from the wallet owner to update the daily allowance.
-
-4 - Update the other methods as required to support the new functionality. */
-
 function Wallet(name, cash) {
   this._name = name;
   this._cash = cash;
