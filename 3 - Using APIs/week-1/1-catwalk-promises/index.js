@@ -48,6 +48,10 @@ function catWalk() {
   const centerPos = (window.innerWidth - img.width) / 2;
   const stopPos = window.innerWidth;
 
+  // Measure execution time - save startTime
+  const startTime = performance.now();
+  // Measure execution time - save startTime
+
   const walkAndDance = () => {
     // Cat walks to center position
     walk(img, startPos, centerPos)
@@ -60,6 +64,13 @@ function catWalk() {
   };
 
   walkAndDance();
+
+  //Measure execution time - save endTime & log Execution time
+  const endTime = performance.now();
+  const executionTime = endTime - startTime;
+  console.log(`Execution time: ${executionTime} milliseconds`);
+  //Measure execution time - save endTime & log Execution time
+
 }
 
 window.addEventListener("load", catWalk);
