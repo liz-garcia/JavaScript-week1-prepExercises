@@ -41,14 +41,13 @@ async function catWalk() {
   const startTime = performance.now();
   // Measure execution time - save startTime
 
-  async function walkAndDance() {
-    while (true) {
-      await walk(img, startPos, centerPos);
-      await dance(img);
-      await walk(img, centerPos, stopPos);
-      await walkAndDance();
-    }
+  while (true) {
+    await walk(img, startPos, centerPos);
+    await dance(img);
+    await walk(img, centerPos, stopPos);
   }
+  // for (;;) {} -> Infinite loop also
+}
 
   walkAndDance();
 
@@ -65,7 +64,7 @@ async function catWalk() {
   setTimeout(() => {
     console.log("After 2 seconds.");
   }, 2000);
-}
+
 
 window.addEventListener("load", catWalk);
 

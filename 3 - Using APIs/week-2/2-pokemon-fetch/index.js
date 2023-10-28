@@ -10,10 +10,8 @@ async function fetchJSON(url) {
     return Promise.reject(new Error(`Failed to fetch data from ${url}`));
   }
 
-  if (fetchedData.ok) {
-    const JSONdata = await fetchedData.json();
-    return Promise.resolve(JSONdata);
-  }
+  const JSONdata = await fetchedData.json();
+  return Promise.resolve(JSONdata);
 }
 
 function renderResults(pokemons) {
