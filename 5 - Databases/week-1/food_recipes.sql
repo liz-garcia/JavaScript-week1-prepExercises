@@ -1,40 +1,37 @@
 -- Recipe Table
 CREATE TABLE Recipe (
-    recipe_id Integer NOT NULL,
+    recipe_id INT AUTO_INCREMENT PRIMARY KEY,
     recipe_name TEXT NOT NULL,
-    category TEXT NOT NULL,
-    CONSTRAINT recipePk PRIMARY KEY(recipe_id)
+    category TEXT NOT NULL
 );
 
 -- Ingredient Table
 CREATE TABLE Ingredient (
-    ingredient_id Integer NOT NULL,
-    ingredient_name TEXT NOT NULL,
-    CONSTRAINT ingredientPk PRIMARY KEY(ingredient_id)
+    ingredient_id INT AUTO_INCREMENT PRIMARY KEY,
+    ingredient_name TEXT NOT NULL
 );
 
 -- Instruction Table
-CREATE TABLE Instruction (
-    instruction_id Integer NOT NULL,
-    instruction_description TEXT NOT NULL,
-    CONSTRAINT instructionPk PRIMARY KEY(instruction_id)
+CREATE TABLE Step (
+    step_id INT AUTO_INCREMENT PRIMARY KEY,
+    step_description TEXT NOT NULL
 );
 
 -- RecipeIngredient Table
 CREATE TABLE RecipeIngredient (
-    recipe_id Integer NOT NULL,
-    ingredient_id Integer NOT NULL,
-    CONSTRAINT recipeIngredientPk PRIMARY KEY (recipe_id, ingredient_id),
-    CONSTRAINT recipeFk FOREIGN KEY(recipe_id) REFERENCES Recipe(recipe_id),
-    CONSTRAINT ingredientFk FOREIGN KEY(ingredient_id) REFERENCES Ingredient(ingredient_id),
+    recipe_id INT NOT NULL,
+    ingredient_id INT NOT NULL,
+    PRIMARY KEY (recipe_id, ingredient_id),
+    FOREIGN KEY(recipe_id) REFERENCES Recipe(recipe_id),
+    FOREIGN KEY(ingredient_id) REFERENCES Ingredient(ingredient_id)
 );
 
 -- RecipeInstruction Table
 CREATE TABLE RecipeInstruction (
-    recipe_id Integer NOT NULL,
-    instruction_id Integer NOT NULL,
-    CONSTRAINT recipeInstructionPk PRIMARY KEY (recipe_id, instruction_id),
-    CONSTRAINT recipeFk FOREIGN KEY(recipe_id) REFERENCES Recipe(recipe_id),
-    CONSTRAINT instructionFk FOREIGN KEY(instruction_id) REFERENCES Instruction(instruction_id)
+    recipe_id INT NOT NULL,
+    step_id INT NOT NULL,
+    PRIMARY KEY (recipe_id, step_id),
+    FOREIGN KEY(recipe_id) REFERENCES Recipe(recipe_id),
+    FOREIGN KEY(step_id) REFERENCES Step(step_id)
 );
 
