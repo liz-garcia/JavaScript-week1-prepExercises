@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "name": "food-recipes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "food_recipes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Liz García",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "mysql": "^2.18.1"
+  }
+}
