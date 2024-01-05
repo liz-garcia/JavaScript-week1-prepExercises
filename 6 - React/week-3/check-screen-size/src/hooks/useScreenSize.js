@@ -25,27 +25,27 @@ const useScreenSize = () => {
   }, []);
 
   // Possible Screen sizes
-  const bigScreen = { size: "bigScreen", minWidth: 1001, maxWidth: Infinity };
-  const mediumScreen = { size: "mediumScreen", minWidth: 701, maxWidth: 1000 };
-  const smallScreen = { size: "smallScreen", minWidth: 0, maxWidth: 700 };
+  const possibleScreenSizes = [
+    { name: "big", minWidth: 1001, maxWidth: Infinity },
+    { name: "medium", minWidth: 701, maxWidth: 1000 },
+    { name: "small", minWidth: 0, maxWidth: 700 },
+  ];
 
-  const possibleScreenSizes = [bigScreen, mediumScreen, smallScreen];
-  let screenSize;
+  let screenSize = {
+    name: "",
+    width: windowSize.width,
+    height: windowSize.height
+  };
 
-  // Use the find method to find the first matching screen size
+  // Find the first matching screen size
   const matchingScreen = possibleScreenSizes.find((screen) => {
-    return (
-      windowSize.width >= screen.minWidth 
-      && windowSize.width <= screen.maxWidth
-    );
+    return (windowSize.width >= screen.minWidth && windowSize.width <= screen.maxWidth);
   });
 
-  if (matchingScreen) {
-    screenSize = matchingScreen.size;
-  }
+  if (matchingScreen) { screenSize.name = matchingScreen.name; }
 
   // Display label in React DevTools
-  useDebugValue(`Size: ${screenSize}, Width: ${windowSize.width}px, Height: ${windowSize.height}px`);
+  useDebugValue(`Size: ${screenSize.name}, Width: ${windowSize.width}px, Height: ${windowSize.height}px`);
 
   return screenSize;
 };

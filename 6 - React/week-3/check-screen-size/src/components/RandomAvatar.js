@@ -3,25 +3,20 @@ import useScreenSize from "../hooks/useScreenSize.js";
 import { Sidney, Maya, John } from "./Avatar.js";
 
 const RandomAvatar = () => {
-  const currentScreenSize = useScreenSize();
+  const screenSize = useScreenSize();
 
-  const isBigScreen = currentScreenSize === "bigScreen";
-  const isMediumScreen = currentScreenSize === "mediumScreen";
-  const isSmallScreen = currentScreenSize === "smallScreen";
-
-  let selectedAvatar;
-
-  if (isBigScreen) {
-    selectedAvatar = <Sidney />;
-  } else if (isMediumScreen) {
-    selectedAvatar = <Maya />;
-  } else if (isSmallScreen) {
-    selectedAvatar = <John />;
-  }
+  const isBigScreen = screenSize.name === "big";
+  const isMediumScreen = screenSize.name === "medium";
+  const isSmallScreen = screenSize.name === "small";
 
   return (
-    <div className="avatar">
-      {selectedAvatar}
+    <div className="random-avatar">
+      <div className="avatar">
+      {isBigScreen && <div id="Sidney">< Sidney /></div>}
+      {isMediumScreen && <div id="Maya">< Maya /></div>}
+      {isSmallScreen && <div id="John">< John /></div>}
+      </div>
+      <h3>You are seeing this avatar because your screen size is {screenSize.name}!</h3>
     </div>
   );
 };
