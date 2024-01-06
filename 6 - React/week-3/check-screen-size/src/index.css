@@ -45,6 +45,10 @@ h3 {
     width: 200px;
 }
 
+span {
+    color: cyan;
+}
+
 @media (max-width: 520px) {
     .random-avatar {
         flex-direction: column;
